@@ -37,6 +37,45 @@ import badgeValue from "@/assets/badge-value.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: "Red Maple Handyman Services — Barrie & Innisfil" },
+      { name: "description", content: "5-star handyman services in Barrie, Innisfil & Simcoe County. Repairs, painting, carpentry, plumbing & more. Free estimates." },
+      { property: "og:title", content: "Red Maple Handyman Services — Professional Home Repairs in Barrie" },
+      { property: "og:description", content: "5-star handyman services in Barrie, Innisfil & Simcoe County. Free estimates, satisfaction guaranteed." },
+      { property: "og:url", content: "https://redmaple-home-hero.lovable.app/" },
+      { property: "og:type", content: "website" },
+    ],
+    links: [{ rel: "canonical", href: "https://redmaple-home-hero.lovable.app/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "HomeAndConstructionBusiness",
+          name: "Red Maple Handyman Services",
+          image: "https://redmaple-home-hero.lovable.app/favicon.png",
+          telephone: "+1-705-985-2665",
+          email: "brian@thebesthandyman.ca",
+          url: "https://redmaple-home-hero.lovable.app/",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Barrie",
+            addressRegion: "ON",
+            addressCountry: "CA",
+          },
+          areaServed: ["Barrie", "Innisfil", "Orillia", "Midland", "Collingwood", "Wasaga Beach", "Alliston", "Orangeville", "Bradford", "Newmarket", "Aurora", "Muskoka", "Bracebridge", "Gravenhurst", "York"],
+          openingHoursSpecification: [{
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            opens: "08:00",
+            closes: "18:00",
+          }],
+          priceRange: "$$",
+        }),
+      },
+    ],
+  }),
 });
 
 const services = [
@@ -397,8 +436,11 @@ function formatDuration(totalMinutes: number) {
 }
 
 function OpenStatus() {
+  const [mounted, setMounted] = useState(false);
   const [status, setStatus] = useState(() => computeOpenStatus(new Date()));
   useEffect(() => {
+    setMounted(true);
+    setStatus(computeOpenStatus(new Date()));
     const id = setInterval(() => setStatus(computeOpenStatus(new Date())), 30000);
     return () => clearInterval(id);
   }, []);
@@ -410,7 +452,7 @@ function OpenStatus() {
         <span className={`relative inline-flex h-2 w-2 rounded-full ${color}`} />
       </span>
       <span className="font-medium">{status.openNow ? "Open now" : "Closed"}</span>
-      <span className="text-muted-foreground">· {status.label}</span>
+      <span className="text-muted-foreground" suppressHydrationWarning>· {mounted ? status.label : ""}</span>
     </span>
   );
 }
@@ -503,7 +545,7 @@ function Badges() {
               <div className="absolute inset-0 -z-10 rounded-full bg-brand/15 blur-2xl opacity-0 transition-opacity group-hover:opacity-100" />
               <img src={img} alt={title} className="max-h-32 w-auto object-contain drop-shadow-md" />
             </motion.div>
-            <h3 className="font-display text-2xl text-foreground">{title}</h3>
+            <h2 className="font-display text-2xl text-foreground">{title}</h2>
             <p className="text-sm text-muted-foreground">{desc}</p>
           </motion.div>
         ))}
@@ -812,9 +854,12 @@ function Newsletter() {
               onSubmit={(e) => { e.preventDefault(); if (email) setSent(true); }}
               className="flex flex-col gap-3 sm:flex-row"
             >
+              <label htmlFor="newsletter-email" className="sr-only">Email address</label>
               <input
+                id="newsletter-email"
                 type="email"
                 required
+                aria-label="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@email.com"

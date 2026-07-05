@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://redmaple-home-hero.lovable.app/sitemap.xml
