@@ -31,9 +31,9 @@ import tileImg from "@/assets/work-tile.jpg";
 import paintImg from "@/assets/work-paint.jpg";
 import deckImg from "@/assets/work-deck.jpg";
 import logoImg from "@/assets/logo.png";
-import badgePromise from "@/assets/badge-promise.png.asset.json";
-import badge5Star from "@/assets/badge-5star.png.asset.json";
-import badgeValue from "@/assets/badge-value.png.asset.json";
+import badgePromise from "@/assets/badge-promise.png";
+import badge5Star from "@/assets/badge-5star.png";
+import badgeValue from "@/assets/badge-value.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
