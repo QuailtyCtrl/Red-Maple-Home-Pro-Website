@@ -523,10 +523,23 @@ function Marquee() {
 
 function Badges() {
   const badges = [
-    { img: badgePromise.url, title: "Our Promise", desc: "It is our commitment and promise to you that we will only deliver our best customer service and care." },
-    { img: badge5Star.url, title: "5-Star Rated", desc: "We have tons of 5-star ratings across the web. A great product with outstanding service — what's not to love?" },
-    { img: badgeValue.url, title: "100% Best Value", desc: "Our company provides the most value well beyond the cost and we guarantee the highest level of customer service." },
+    {
+      img: badgePromise,
+      title: "Our Promise",
+      desc: "It is our commitment and promise to you that we will only deliver our best customer service and care."
+    },
+    {
+      img: badge5Star,
+      title: "5-Star Rated",
+      desc: "We have tons of 5-star ratings across the web. A great product with outstanding service — what's not to love?"
+    },
+    {
+      img: badgeValue,
+      title: "100% Best Value",
+      desc: "Our company provides the most value well beyond the cost and we guarantee the highest level of customer service."
+    },
   ];
+  
   return (
     <section className="py-20 bg-muted">
       <div className="container-page grid gap-6 md:grid-cols-3">
