@@ -1,0 +1,115 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ink: var(--ink);
+  --color-cream: var(--cream);
+  --color-brand: var(--brand);
+  --color-brand-deep: var(--brand-deep);
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Brand */
+  --brand: oklch(0.45 0.17 25);         /* #91191C accent — deep red */
+  --brand-deep: oklch(0.36 0.14 25);    /* deeper burgundy */
+  --ink: oklch(0.28 0.02 270);          /* #3F3F50 primary */
+  --cream: oklch(0.97 0.012 80);        /* warm off-white */
+
+  --background: oklch(0.985 0.008 80);
+  --foreground: oklch(0.22 0.02 270);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.02 270);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.02 270);
+  --primary: var(--brand);
+  --primary-foreground: oklch(0.985 0.008 80);
+  --secondary: oklch(0.94 0.01 80);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.95 0.008 80);
+  --muted-foreground: oklch(0.5 0.02 270);
+  --accent: var(--brand);
+  --accent-foreground: oklch(0.985 0.008 80);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.9 0.01 80);
+  --input: oklch(0.9 0.01 80);
+  --ring: var(--brand);
+}
+
+.dark {
+  --brand: oklch(0.62 0.19 25);
+  --brand-deep: oklch(0.5 0.17 25);
+  /* --ink and --cream stay stable across themes: used as solid brand surfaces */
+  --background: oklch(0.16 0.015 270);
+  --foreground: oklch(0.96 0.01 80);
+  --card: oklch(0.21 0.015 270);
+  --card-foreground: oklch(0.96 0.01 80);
+  --popover: oklch(0.21 0.015 270);
+  --popover-foreground: oklch(0.96 0.01 80);
+  --primary: var(--brand);
+  --primary-foreground: oklch(0.98 0.008 80);
+  --secondary: oklch(0.26 0.015 270);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.24 0.015 270);
+  --muted-foreground: oklch(0.7 0.02 270);
+  --accent: var(--brand);
+  --accent-foreground: oklch(0.98 0.008 80);
+  --border: oklch(0.3 0.015 270);
+  --input: oklch(0.3 0.015 270);
+  --ring: var(--brand);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    font-weight: 500;
+  }
+}
+
+@utility container-page {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
