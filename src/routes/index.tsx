@@ -365,7 +365,7 @@ function Hero() {
               className="absolute right-4 top-4 max-w-[260px] rounded-2xl border border-white/15 bg-ink/70 p-4 text-primary-foreground backdrop-blur-md shadow-xl"
             >
               <div className="flex gap-0.5">
-                {[0,1,2,3,4].map(i => <Star key={i} className="h-3.5 w-3.5 fill-yellow-400 text-yellow-400" />)}
+                {[0, 1, 2, 3, 4].map(i => <Star key={i} className="h-3.5 w-3.5 fill-yellow-400 text-yellow-400" />)}
               </div>
               <p className="mt-2 text-xs leading-snug text-white/90">
                 "Punctual, tidy, and genuinely skilled."
@@ -539,7 +539,7 @@ function Badges() {
       desc: "Our company provides the most value well beyond the cost and we guarantee the highest level of customer service."
     },
   ];
-  
+
   return (
     <section className="py-20 bg-muted">
       <div className="container-page grid gap-6 md:grid-cols-3">
@@ -984,7 +984,7 @@ function Footer() {
         <div className="container-page flex flex-col justify-between gap-3 py-6 text-xs text-muted-foreground md:flex-row">
           <span>© Copyright 2025 | All Rights Reserved | Red Maple Handyman Services is a division of XP Group Inc.</span>
           <a
-            href="https://samstudios.lovable.app/"
+            href="https://gotosamstudios.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
             className="tracking-wider transition-colors hover:text-brand"
